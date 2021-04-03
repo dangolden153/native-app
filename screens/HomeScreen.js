@@ -11,7 +11,7 @@ import { Avatar } from "react-native-elements";
 import pics from "../pictures/pics3.jpg";
 import svg from "../pictures/whatsapp.svg";
 import svg1 from "../pictures/facebook.svg";
-import {db, Auth} from '../firebase'
+// import {db, Auth} from '../firebase'
 import {AntDesign, SimpleLineIcons} from '@expo/vector-icons'
 import ListItems from "../component/ListItems";
 

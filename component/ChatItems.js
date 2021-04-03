@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Auth } from "../firebase";
+// import { Auth } from "../firebase";
 import { Avatar } from "react-native-elements";
 import pics from "../pictures/pics3.jpg";
 

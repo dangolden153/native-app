@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { KeyboardAvoidingView,Platform } from "react-native";
 import { Button, Input } from "react-native-elements";
-import {Auth} from '../firebase'
+// import {Auth} from '../firebase'
 import pics from "../pictures/pics1.jpg";
 
 const Login = ({ navigation }) => {
@@ -11,13 +11,13 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-     const unSubscribe = Auth.onAuthStateChanged(user => {
-          if(user){
-              navigation.replace("Home")
-              console.log(user)
-          }
-      })
-      return unSubscribe;
+    //  const unSubscribe = Auth.onAuthStateChanged(user => {
+    //       if(user){
+    //           navigation.replace("Home")
+    //           console.log(user)
+    //       }
+    //   })
+    //   return unSubscribe;
   }, []);
 
   const login = () => {

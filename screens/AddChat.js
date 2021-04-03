@@ -1,20 +1,20 @@
 import React, {useLayoutEffect, useState} from 'react'
 import { View, Text, KeyboardAvoidingView,StyleSheet } from 'react-native'
 import { Input, Button } from 'react-native-elements'
-import {db} from '../firebase'
+// import {db} from '../firebase'
 const AddChat = ({navigation}) => {
 
     const [text, setText] = useState('')
 
     const createChat = async () =>{
-        await db.collection("chats").add({
-            chatName : text
+        // await db.collection("chats").add({
+        //     chatName : text
 
-        }) .then(response =>{
-            navigation.goBack()
-            console.log(response)
-            alert('chat added')
-        }) .catch(err => alert(err))
+        // }) .then(response =>{
+        //     navigation.goBack()
+        //     console.log(response)
+        //     alert('chat added')
+        // }) .catch(err => alert(err))
 
         // 
         // navigation.navigate("Home")

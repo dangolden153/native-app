@@ -17,8 +17,8 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { Avatar,Button,Input } from "react-native-elements";
 import pics from "../pictures/pics4.jpg";
-import {db, Auth} from '../firebase'
-import  firebase from 'firebase'
+// import {db, Auth} from '../firebase'
+// import  firebase from 'firebase'
 
 
 import ChatItems from '../component/ChatItems'
@@ -50,17 +50,17 @@ const [messages, setMessages] = useState([])
   }, []);
 
   useEffect(() => {
-    const unSubscribe = db.collection("chats").doc(route.params.id).collection("message")
-    .orderBy("timeStamp", "asc")
-    .onSnapshot(snapshot=>{
-        setMessages(snapshot.docs.map(doc=>({
-            id: doc.id,
-            data: doc.data()
-        })))
-    })
-      return () => {
-          unSubscribe
-      }
+    // const unSubscribe = db.collection("chats").doc(route.params.id).collection("message")
+    // .orderBy("timeStamp", "asc")
+    // .onSnapshot(snapshot=>{
+    //     setMessages(snapshot.docs.map(doc=>({
+    //         id: doc.id,
+    //         data: doc.data()
+    //     })))
+    // })
+    //   return () => {
+    //       unSubscribe
+    //   }
   }, [setMessages])
 
   console.log(messages)

@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useEffect, useState } from "react";
 import { View, Text, KeyboardAvoidingView,StyleSheet,Platform } from "react-native";
 import { Button, Input } from "react-native-elements";
-import {Auth} from '../firebase'
-
+// import {Auth} from '../firebase'
+import axios from 'axios'
 
 const Register = ({ navigation }) => {
 
@@ -11,20 +11,71 @@ const Register = ({ navigation }) => {
   const [imgUrl, setImgUrl] = useState("");
   const [password, setPassword] = useState("");
 
-  const register=()=>{
-    Auth.createUserWithEmailAndPassword(email, password)
-    .then(AuthUser =>{
-        AuthUser.user.updateProfile({
-            displayName: userName,
-            // photoURL:  "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg"
-        })
-    }) .then (res =>{
+  // const register=()=>{
+  //   Auth.createUserWithEmailAndPassword(email, password)
+  //   .then(AuthUser =>{
+  //       AuthUser.user.updateProfile({
+  //           displayName: userName,
+  //           // photoURL:  "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg"
+  //       })
+  //   }) .then (res =>{
+  //     navigation.navigate("Home")
+  //   })
+
+  //   .catch(err => alert(err.message))
+  // }
+
+  const register= async ()=>{
+    const formData = new FormData()
+        formData.append('name', userName)
+        formData.append('email', email)
+        formData.append('password', password)
+    axios.post("http://localhost:5000/api/users/signup",formData)
+
+
+    .then(res => {
+      alert("sucessfull")
+      console.log(res)
       navigation.navigate("Home")
-    })
 
-    .catch(err => alert(err.message))
-  }
+    }) .catch(err => console.log(err))
 
+
+
+  //   try {
+  //     const response = await fetch("https://dan-chatapp.herokuapp.com/api/users/signup", {
+  //       method: 'POST',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json',
+  //       },
+
+  //       body: JSON.stringify({
+  //        name: userName,
+  //        email: email,
+  //        password: password
+  //       })
+  // }) 
+  // .then(res => {
+  //   alert("sucessfull")
+  //   console.log(res)
+  //   navigation.navigate("Home")
+
+  // }) .catch(err => console.log(err))
+  // const responseData = await response.json()
+  // console.log(responseData)
+
+
+  // } catch (error) {
+  //     console.log(error.message)
+  //     setLoadingSpinner(false)
+  // }
+
+  
+
+  } 
+
+ 
 
   useLayoutEffect(() => {
     navigation.setOptions({
